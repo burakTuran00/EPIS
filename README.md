@@ -1,5 +1,6 @@
 # EPIS
 Electronic Pharmacy Information System
+![EPIS](https://github.com/user-attachments/assets/0860b3cd-87c3-49bb-8b0c-d1dbd1231ed3)
 
 
 A tool for Turkish Government's App caled E- Nabız.
