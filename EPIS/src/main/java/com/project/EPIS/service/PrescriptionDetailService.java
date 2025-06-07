@@ -2,6 +2,7 @@ package com.project.EPIS.service;
 
 import com.project.EPIS.core.utility.mapper.ModelMapperService;
 import com.project.EPIS.dto.PrescriptionDetailDto;
+import com.project.EPIS.dto.ePulseResponse.PrescriptionDetailWithMedicationDto;
 import com.project.EPIS.entity.PrescriptionDetail;
 import com.project.EPIS.exception.EmptyException;
 import com.project.EPIS.exception.NotFoundException;
@@ -62,6 +63,23 @@ public class PrescriptionDetailService {
 
         for(PrescriptionDetail pDetail : prescriptionDetails){
             result.add(modelMapperService.forResponse().map(pDetail, PrescriptionDetailDto.class));
+        }
+
+        return result;
+    }
+
+    public List<PrescriptionDetailWithMedicationDto> getPrescriptionWithDetail(int prescriptionId){
+        List<PrescriptionDetail> list = prescriptionDetailRepository.findAllByPrescriptionId(prescriptionId)
+                .orElseThrow(() -> new NotFoundException("not found prescription"));
+
+        if(list == null ||list.isEmpty()){
+            throw new EmptyException("Empty Prescription List!");
+        }
+
+        List<PrescriptionDetailWithMedicationDto> result = new ArrayList<>();
+
+        for(PrescriptionDetail pDetail : list){
+            result.add(modelMapperService.forResponse().map(pDetail, PrescriptionDetailWithMedicationDto.class));
         }
 
         return result;
