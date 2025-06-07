@@ -36,7 +36,8 @@ public class PrescriptionController {
     }
 
     @GetMapping("{prescriptionId}/withPatient/{patientId}")
-    public ResponseEntity<PrescriptionDto> getSpecificPrescription(@PathVariable("patientId") int patientId, @PathVariable("prescriptionId") int prescriptionId){
+    public ResponseEntity<PrescriptionDto> getSpecificPrescription(@PathVariable("patientId") int patientId,
+                                                                   @PathVariable("prescriptionId") int prescriptionId){
         return ResponseEntity.ok(prescriptionService.getSpecificPrescription(patientId, prescriptionId));
     }
 }

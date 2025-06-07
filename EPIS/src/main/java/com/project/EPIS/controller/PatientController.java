@@ -1,7 +1,6 @@
 package com.project.EPIS.controller;
 
 import com.project.EPIS.dto.PatientDto;
-import com.project.EPIS.entity.Patient;
 import com.project.EPIS.service.PatientService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

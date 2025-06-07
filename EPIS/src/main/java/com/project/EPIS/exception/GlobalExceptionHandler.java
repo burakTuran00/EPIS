@@ -18,7 +18,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({EmptyException.class})
     public ResponseEntity<Object> handleNotFoundException(EmptyException exception) {
         return ResponseEntity
-                .status(HttpStatus.NOT_FOUND)
+                .status(HttpStatus.BAD_REQUEST)
                 .body(exception.getMessage());
     }
 }
