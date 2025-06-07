@@ -40,6 +40,16 @@ public class MedicationService {
         return result;
     }
 
+    public List<Medication> getAllWithEntity(){
+        List<Medication> medications = medicationRepository.findAll(Sort.by("id").ascending());
+
+        if(medications == null || medications.isEmpty()){
+            throw new EmptyException("No medication!");
+        }
+
+        return medications;
+    }
+
     public MedicationDto getById(int id) {
         Medication medication = medicationRepository.findById(id)
                 .orElseThrow(()-> new NotFoundException("Medication didn't find!"));
