@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "pharmacy")
+@Table(name = "pharmacies")
 public class Pharmacy {
 
     //region Properties

@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "prescription")
+@Table(name = "prescriptions")
 public class Prescription {
     //region Properties
     @Id

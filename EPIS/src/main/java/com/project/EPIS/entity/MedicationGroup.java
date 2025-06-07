@@ -6,7 +6,7 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "medication_group")
+@Table(name = "medication_groups")
 public class MedicationGroup {
     //region Properties
     @Id

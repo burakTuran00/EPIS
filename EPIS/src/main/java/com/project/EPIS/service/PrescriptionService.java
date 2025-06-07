@@ -59,4 +59,14 @@ public class PrescriptionService {
 
         return result;
     }
+
+    public PrescriptionDto getSpecificPrescription(int patientId, int prescriptionId)
+    {
+        Prescription prescription =
+                prescriptionRepository
+                .findPrescriptionByPatientIdAndId(patientId, prescriptionId)
+                .orElseThrow(() -> new NotFoundException("Not Found Prescription!"));
+
+        return modelMapperService.forResponse().map(prescription, PrescriptionDto.class);
+    }
 }

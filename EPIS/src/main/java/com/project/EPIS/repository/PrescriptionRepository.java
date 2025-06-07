@@ -9,4 +9,5 @@ import java.util.Optional;
 public interface PrescriptionRepository extends JpaRepository<Prescription, Integer> {
     Optional<Prescription> findPrescriptionById(int Id);
     Optional<List<Prescription>> findPrescriptionsByPatientId(int patient_id);
+    Optional<Prescription> findPrescriptionByPatientIdAndId(int patient_id, int id);
 }

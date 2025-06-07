@@ -3,7 +3,7 @@ package com.project.EPIS.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "stock")
+@Table(name = "stocks")
 public class Stock {
 
     //region Properties

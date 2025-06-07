@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "medication")
+@Table(name = "medications")
 public class Medication {
 
     //region Properties
