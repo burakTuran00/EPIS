@@ -12,6 +12,7 @@ import java.util.List;
 
 @Service
 public class PatientService {
+
     private final PatientRepository patientRepository;
     private final ModelMapperService modelMapperService;
 
@@ -19,7 +20,6 @@ public class PatientService {
         this.patientRepository = patientRepository;
         this.modelMapperService = modelMapperService;
     }
-
 
     public List<PatientDto> getAll() {
         List<Patient> patients = patientRepository.findAll();
