@@ -2,7 +2,10 @@ package com.project.EPIS.service;
 
 import com.project.EPIS.core.utility.mapper.ModelMapperService;
 import com.project.EPIS.dto.PharmacyDto;
+import com.project.EPIS.dto.ePulse.request.FindPharmacyRequestDto;
+import com.project.EPIS.entity.Medication;
 import com.project.EPIS.entity.Pharmacy;
+import com.project.EPIS.entity.Stock;
 import com.project.EPIS.exception.EmptyException;
 import com.project.EPIS.exception.NotFoundException;
 import com.project.EPIS.repository.PharmacyRepository;
@@ -42,5 +45,32 @@ public class PharmacyService {
                 .orElseThrow(() -> new NotFoundException("Not Found Pharmacy"));
 
         return modelMapperService.forResponse().map(pharmacy, PharmacyDto.class);
+    }
+
+    public List<PharmacyDto> findAvailablePharmacies(FindPharmacyRequestDto requestDto){
+        List<Pharmacy> pharmacies = pharmacyRepository
+                .findPharmaciesByCity(requestDto.getCity())
+                .orElseThrow(() -> new EmptyException("Not found Available Pharmacy!"));
+
+        List<PharmacyDto> result = new ArrayList<>();
+
+        for (Pharmacy pharmacy : pharmacies) {
+            List<Integer> tempList = new ArrayList<>(requestDto.getMedicationIds());
+            List<Stock> tempStock = pharmacy.getStocks();
+
+            for (Stock stock : tempStock) {
+                Medication tempMedication = stock.getMedication();
+
+                if (tempList.contains(tempMedication.getId()) && stock.getQuantity() > 0) {
+                    tempList.remove(Integer.valueOf(tempMedication.getId()));
+                }
+            }
+
+            if (tempList.isEmpty()) {
+                result.add(modelMapperService.forResponse().map(pharmacy, PharmacyDto.class));
+            }
+        }
+
+        return result;
     }
 }

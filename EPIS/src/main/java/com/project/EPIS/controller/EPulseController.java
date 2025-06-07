@@ -2,7 +2,7 @@ package com.project.EPIS.controller;
 
 import com.project.EPIS.dto.PrescriptionDetailDto;
 import com.project.EPIS.dto.PrescriptionDto;
-import com.project.EPIS.dto.ePulseResponse.PrescriptionWithDetailDto;
+import com.project.EPIS.dto.ePulse.response.PrescriptionWithDetailDto;
 import com.project.EPIS.service.EPulseService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

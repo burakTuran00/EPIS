@@ -2,8 +2,8 @@ package com.project.EPIS.service;
 
 import com.project.EPIS.dto.PrescriptionDetailDto;
 import com.project.EPIS.dto.PrescriptionDto;
-import com.project.EPIS.dto.ePulseResponse.PrescriptionDetailWithMedicationDto;
-import com.project.EPIS.dto.ePulseResponse.PrescriptionWithDetailDto;
+import com.project.EPIS.dto.ePulse.response.PrescriptionDetailWithMedicationDto;
+import com.project.EPIS.dto.ePulse.response.PrescriptionWithDetailDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

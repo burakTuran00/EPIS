@@ -2,7 +2,7 @@ package com.project.EPIS.service;
 
 import com.project.EPIS.core.utility.mapper.ModelMapperService;
 import com.project.EPIS.dto.PrescriptionDetailDto;
-import com.project.EPIS.dto.ePulseResponse.PrescriptionDetailWithMedicationDto;
+import com.project.EPIS.dto.ePulse.response.PrescriptionDetailWithMedicationDto;
 import com.project.EPIS.entity.PrescriptionDetail;
 import com.project.EPIS.exception.EmptyException;
 import com.project.EPIS.exception.NotFoundException;

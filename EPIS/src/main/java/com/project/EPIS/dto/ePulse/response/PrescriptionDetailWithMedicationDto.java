@@ -1,4 +1,4 @@
-package com.project.EPIS.dto.ePulseResponse;
+package com.project.EPIS.dto.ePulse.response;
 
 import com.project.EPIS.dto.MedicationDto;
 
