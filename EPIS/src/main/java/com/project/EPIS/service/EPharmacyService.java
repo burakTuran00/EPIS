@@ -81,9 +81,6 @@ public class EPharmacyService {
 
                 pharmacyWithDetailDtos.add(tempResult);
             }
-            else {
-
-            }
         }
 
         result.setPharmacyWithDetailDtos(pharmacyWithDetailDtos);
