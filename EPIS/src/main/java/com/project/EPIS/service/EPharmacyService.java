@@ -56,24 +56,36 @@ public class EPharmacyService {
 
             if(!medicationIdList.isEmpty())
             {
-                for(Integer medicationId : medicationIdList)
+                for(Integer medicationId : new ArrayList<>(medicationIdList))
                 {
-                    MedicationDto tempMedication = modelMapperService.forResponse().map(medicationService.getById(medicationId), MedicationDto.class);
-                    List<MedicationDto> medications = medicationService.getByGroupId(tempMedication.getMedicationGroupId());
+                    MedicationDto originalMedication  = modelMapperService.forResponse().map(
+                            medicationService.getById(medicationId), MedicationDto.class);
+
+                    List<MedicationDto> equivalentMedications = medicationService.getByGroupId(originalMedication .getMedicationGroupId());
 
                     for(Stock stock : tempStock)
                     {
-                        MedicationDto tempStockMedication =  modelMapperService.forResponse()
-                                .map(stock.getMedication(),MedicationDto.class);
+                        if(medicationIdList.isEmpty()) {
+                            break;
+                        }
 
-                        if(medications.contains(tempStockMedication) && stock.getQuantity() > 0){
-                            medicationDtos.add(modelMapperService.forResponse().map(tempStockMedication, MedicationDto.class));
-                            medicationIdList.remove(Integer.valueOf(tempMedication.getId()));
+                        MedicationDto tempStockMedication = modelMapperService.forResponse().map(stock.getMedication(), MedicationDto.class);
+
+                        if(stock.getQuantity() > 0)
+                        {
+                            for(MedicationDto eq : equivalentMedications)
+                            {
+                                if(eq.equals(tempStockMedication))
+                                {
+                                    medicationDtos.add(tempStockMedication);
+                                    medicationIdList.remove(medicationId);
+                                    break;
+                                }
+                            }
                         }
                     }
                 }
             }
-
 
             if (medicationIdList.isEmpty()) {
                 tempResult.setPharmacyDto(modelMapperService.forResponse().map(pharmacy, PharmacyDto.class));

@@ -1,5 +1,11 @@
 package com.project.EPIS.dto;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+import java.util.Objects;
+
+@Data
 public class MedicationDto {
     //region Property
     private int id;
@@ -96,4 +102,5 @@ public class MedicationDto {
     }
 
     //endregion Getters and Setters
+
 }
