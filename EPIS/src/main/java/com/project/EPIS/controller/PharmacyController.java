@@ -28,4 +28,9 @@ public class PharmacyController {
     public ResponseEntity<PharmacyDto> getById(@PathVariable("id") int id){
         return ResponseEntity.ok(pharmacyService.getById(id));
     }
+
+    @GetMapping("/getByCityLike/{city}")
+    public ResponseEntity<List<PharmacyDto>> getByCityLike(@PathVariable("city") String city){
+        return ResponseEntity.ok(pharmacyService.getByCityLike(city));
+    }
 }

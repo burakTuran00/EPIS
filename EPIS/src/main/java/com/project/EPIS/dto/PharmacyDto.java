@@ -11,6 +11,7 @@ public class PharmacyDto {
     private String subCity;
     private String address;
     private boolean onDuty;
+    private boolean isOriginal;
     //endregion Property
 
     //region Constructor

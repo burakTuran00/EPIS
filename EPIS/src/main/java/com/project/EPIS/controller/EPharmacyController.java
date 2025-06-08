@@ -2,7 +2,10 @@ package com.project.EPIS.controller;
 
 import com.project.EPIS.dto.PharmacyDto;
 import com.project.EPIS.dto.ePulse.request.FindPharmacyRequestDto;
+import com.project.EPIS.dto.ePulse.response.PharmacyResponseDto;
+import com.project.EPIS.dto.ePulse.response.PharmacyWithDetailDto;
 import com.project.EPIS.service.EPharmacyService;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +24,7 @@ public class EPharmacyController {
     }
 
     @PostMapping("/findPharmacy")
-    public ResponseEntity<List<PharmacyDto>> findPharmacy(@RequestBody FindPharmacyRequestDto requestDto) {
+    public ResponseEntity<PharmacyResponseDto> findPharmacy(@RequestBody @NotNull FindPharmacyRequestDto requestDto) {
         return ResponseEntity.ok(ePharmacyService.findPharmacy(requestDto));
     }
 }

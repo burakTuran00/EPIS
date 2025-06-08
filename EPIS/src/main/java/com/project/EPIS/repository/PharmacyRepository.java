@@ -9,4 +9,5 @@ import java.util.Optional;
 public interface PharmacyRepository extends JpaRepository<Pharmacy, Integer> {
 
     Optional<List<Pharmacy>> findPharmaciesByCity(String city);
+    Optional<List<Pharmacy>> findPharmaciesByCityLike(String city);
 }

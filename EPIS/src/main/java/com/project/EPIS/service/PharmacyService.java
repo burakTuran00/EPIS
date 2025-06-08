@@ -49,4 +49,16 @@ public class PharmacyService {
                 .findPharmaciesByCity(city)
                 .orElseThrow(() -> new EmptyException("Not found Available Pharmacy!"));
     }
+
+    public List<PharmacyDto> getByCityLike(String city) {
+        List<Pharmacy> pharmacies = pharmacyRepository.findPharmaciesByCityLike("%"+city+"%")
+                .orElseThrow(() -> new NotFoundException("Not found pharmacy!"));
+        List<PharmacyDto> result = new ArrayList<>();
+
+        for(Pharmacy pharmacy: pharmacies){
+            result.add(modelMapperService.forResponse().map(pharmacy, PharmacyDto.class));
+        }
+
+        return result;
+    }
 }
