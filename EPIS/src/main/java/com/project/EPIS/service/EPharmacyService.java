@@ -58,9 +58,11 @@ public class EPharmacyService {
             {
                 for(Integer medicationId : new ArrayList<>(medicationIdList))
                 {
-                    MedicationDto originalMedication  = modelMapperService.forResponse().map(
-                            medicationService.getById(medicationId), MedicationDto.class);
+                    if(medicationIdList.isEmpty()) {
+                        break;
+                    }
 
+                    MedicationDto originalMedication  = modelMapperService.forResponse().map(medicationService.getById(medicationId), MedicationDto.class);
                     List<MedicationDto> equivalentMedications = medicationService.getByGroupId(originalMedication .getMedicationGroupId());
 
                     for(Stock stock : tempStock)
@@ -71,11 +73,11 @@ public class EPharmacyService {
 
                         MedicationDto tempStockMedication = modelMapperService.forResponse().map(stock.getMedication(), MedicationDto.class);
 
-                        if(stock.getQuantity() > 0)
+                        if(equivalentMedications.stream().count() > 0)
                         {
                             for(MedicationDto eq : equivalentMedications)
                             {
-                                if(eq.equals(tempStockMedication))
+                                if(eq.equals(tempStockMedication) && stock.getQuantity() > 0)
                                 {
                                     medicationDtos.add(tempStockMedication);
                                     medicationIdList.remove(medicationId);
