@@ -48,7 +48,7 @@ public class StockService {
                 .orElseThrow(() -> new NotFoundException("Not found Stock!"));
 
         if(stocks == null || stocks.isEmpty()){
-            throw new EmptyException("Stock not exist!");
+            throw new EmptyException("Stock   exist!");
         }
 
         List<StockDto> result = new ArrayList<>();
